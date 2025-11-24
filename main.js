@@ -6,7 +6,7 @@ function getComputerChoice () {
 }
 
 function getHumanChoice() {
-    const userChoices = promp=("Please choose one: rock, paper or scissor");
+    const userChoices = prompt("Please choose one: rock, paper or scissor");
     const choice = userChoices.toLowerCase();
 
     if (choice == "rock" || choice == "paper" || choice == "scissor") {
@@ -44,17 +44,33 @@ function playRound(humanChoice, computerChoice) {
 
 }
 
-const humanChoice = getHumanChoice();
-const computerChoice = getComputerChoice();
+// const humanChoice = () => getHumanChoice();
+// const computerChoice = () => getComputerChoice();
 
 // playRound(humanChoice, computerChoice);
 
+// function playGame2(){
+//     let round = 0;
+//     do {
+//         const humanChoice = getHumanChoice();
+//         const ChcomputerChoiceoice = getComputerChoice();
+//         playRound(humanChoice, ChcomputerChoiceoice);
+//         console.log("Let's do another round");
+//         round++;
+//     } while (round < 5);
+// }
+
+// playGame2()
+
 function playGame() {
     for (let round = 0; round < 5; round++) {
-        playRound(humanChoice, computerChoice);
+        const humanChoice = getHumanChoice();
+        const ChcomputerChoiceoice = getComputerChoice();
+        playRound(humanChoice, ChcomputerChoiceoice);
         console.log("Let's do another round");
     }
     console.log("We reached round limit");
 }
+
 
 playGame()
