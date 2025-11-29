@@ -10,9 +10,9 @@ const input = document.querySelector('input');
 const btnrock = document.querySelector('#rock');
 const btnpaper = document.querySelector('#paper');
 const btnscissor = document.querySelector('#scissor');
-const resultDiv = document.createElement('div');
 const p2 = document.createElement('p');
 const p3 = document.createElement('p');
+
 
 
 let humanScore = 0;
@@ -65,6 +65,7 @@ let form = document.querySelector('form');
 
 form.addEventListener('click', (event) => {
     event.preventDefault();
+    const listAttempts = document.createElement('li');
     const currentRound = attempt.querySelectorAll('li').length + 1;
     if (currentRound > 5) {
         return; // Do nothing if already played 5 rounds
@@ -92,12 +93,24 @@ form.addEventListener('click', (event) => {
     
     const p1 = document.createElement('p');
     p1.textContent = `Round ${currentRound} - Human Choice: ${humChoice} - Computer Choice: ${comChoice} `;
+    const resultDiv = document.createElement('div');
 
     resultDiv.innerHTML = ''; // Clear previous results
     resultDiv.appendChild(p1);
     resultDiv.appendChild(p2);
     resultDiv.appendChild(p3);
-    attempt.appendChild(resultDiv);
+    listAttempts.appendChild(resultDiv);
+    attempt.appendChild(listAttempts);
+
+    if (humanScore === 5 || computerScore === 5) {
+        if (humanScore === 5) {
+        winner = "Human";
+        } else {winner = "Computer"
+        }
+        const p4 = document.createElement('p');
+        p4.textContent =`${winner} reached 5 points first, ${winner} is the winner.`;
+        attempt.appendChild(p4);
+    }
     
 });
 
