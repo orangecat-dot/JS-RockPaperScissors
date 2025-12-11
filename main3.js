@@ -65,7 +65,7 @@ let form = document.querySelector('form');
 
 form.addEventListener('click', (event) => {
     event.preventDefault();
-    const currentRound = attempt.querySelectorAll('li').length + 1;
+    const currentRound = attempt.querySelectorAll('ul').length + 1;
     if (currentRound > 5) {
         return; // Do nothing if already played 5 rounds
     }
@@ -88,6 +88,8 @@ form.addEventListener('click', (event) => {
     }
 
     const comChoice = getComputerChoice();
+    const humchoice = event.target.id;
+    
     playRound(humChoice, comChoice);
     
     const p1 = document.createElement('p');
